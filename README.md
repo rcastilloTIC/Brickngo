@@ -1,5 +1,5 @@
-# Brickngo (Español/Spanish)
-# Generador de Cartones de Bingo LEGO® 
+# Brickngo 
+# Generador de Cartones de Bingo LEGO® (Español/Spanish)
 
 Este proyecto contiene un script en Python (`cartones.py`) y un script en Bash (`renombrar.sh`) que te permiten generar un PDF con cartones de bingo de piezas LEGO®. 
 Los cartones se generan a partir de un conjunto de 90 piezas, divididas en tres grupos de 30. El proceso de creación sigue estos pasos:

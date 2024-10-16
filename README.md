@@ -179,7 +179,7 @@ If you wish to contribute to this project, please fork the repository, make your
 
 ## License
 
-This project is licensed under the CC BY-NC-SA 4.0 License. You can check [this link](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1)for more details.
+This project is licensed under the CC BY-NC-SA 4.0 License. You can check [this link](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1) for more details.
 
 
 ## Additional Notes

@@ -91,13 +91,13 @@ def dibujar_carton(c, carton, x_offset, y_offset):
     # Ajustes para la casilla
     # Adjustments for the cell
     cell_width = 50   # Ancho de cada casilla / Width of each cell
-    cell_height = 60  # Altura de cada casilla / Height of each cell
+    cell_height = 50  # Altura de cada casilla / Height of each cell
     x = x_offset
     y = y_offset
 
     # Dibujar la imagen del título "bingo.jpg" sobre el cartón
     # Draw the "bingo.jpg" title image above the card
-    c.drawImage("./bingo.jpg", x_offset, y_offset , width=200, height=40, preserveAspectRatio=True)
+    c.drawImage("./bingo.jpg", x_offset, y_offset+20 , width=200, height=40, preserveAspectRatio=True)
 
     for fila in carton:
         for pieza in fila:
@@ -110,7 +110,7 @@ def dibujar_carton(c, carton, x_offset, y_offset):
                 ruta_imagen = obtener_imagen(pieza)
                 try:
                     # Dibujar la imagen de la pieza en la casilla / Draw the image of the piece in the cell
-                    c.drawImage(ruta_imagen, x, y - cell_height, width=cell_width, height=cell_height, preserveAspectRatio=True)
+                    c.drawImage(ruta_imagen, x+5, y - cell_height+5, width=cell_width-10, height=cell_height-10, preserveAspectRatio=True)
                 except Exception as e:
                     # Si no se encuentra la imagen, dibujar un recuadro vacío o un mensaje de error
                     # If the image is not found, draw an empty box or error message
@@ -122,6 +122,18 @@ def dibujar_carton(c, carton, x_offset, y_offset):
             x += cell_width # Espacio entre columnas / Space between columns
         x = x_offset
         y -= cell_height  # Espacio entre filas / Space between rows
+
+# Función para agregar el pie de página con la información proporcionada
+# Function to add the footer with the provided information
+def agregar_pie_pagina(c, ancho_pagina, y_offset):
+    c.setFont("Helvetica", 8)  # Fuente más pequeña para el pie de página / Smaller font for the footer
+    pie_pagina = "© Rafa Castillo 2024 CC BY-NC-SA 4.0\nImages © LEGO® Group\nLEGO® is a trademark of the LEGO Group, which does not sponsor, authorize, or endorse this work.\nOnly for non-commercial use - Not for resale"
+    
+    # Añadir cada línea del pie de página, ajustando el espacio vertical
+    # Add each line of the footer, adjusting the vertical spacing
+    lineas_pie = pie_pagina.split('\n')
+    for i, linea in enumerate(lineas_pie):
+        c.drawString(50, y_offset - (i * 10), linea)  # 10 es el espacio entre líneas / 10 is the space between lines
 
 # Función principal para generar el PDF con los 200 cartones
 # Main function to generate the PDF with 200 bingo cards
@@ -141,9 +153,20 @@ def generar_pdf(nombre_archivo):
 
         # Dibujar el primer cartón en la parte superior de la página / Draw the first card at the top of the page
         dibujar_carton(c, carton1, 50, alto - 150)
-
+        
+        # Dibujar una línea discontinua en el centro de la página, entre los dos cartones
+        # Draw a dashed line in the center of the page, between the two bingo cards
+        c.setDash(6, 3)  # Establecer la línea discontinua (6 puntos de línea, 3 puntos de espacio) / Set the dashed line (6 points line, 3 points gap)
+        c.line(50, alto - 350, ancho - 50, alto - 350)  # Dibujar la línea horizontal en el centro / Draw the horizontal line in the center
+        c.setDash()  # Restablecer a línea continua / Reset to continuous line
+        
         # Dibujar el segundo cartón en la parte inferior de la página / Draw the second card at the bottom of the page
-        dibujar_carton(c, carton2, 50, alto - 450)
+        dibujar_carton(c, carton2, 50, alto - 500)
+        
+        # Añadir el pie de página en la parte inferior de cada página
+        # Add the footer to the bottom of each page
+        agregar_pie_pagina(c, ancho, 30)  # 30 es la distancia desde la parte inferior de la página / 30 is the distance from the bottom of the page
+
     # Añadir el listado de piezas al final del PDF / Add the parts list at the end of the PDF
     dibujar_listado_piezas(c, piezas)
     

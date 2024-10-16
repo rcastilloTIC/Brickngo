@@ -7,6 +7,25 @@ from reportlab.lib import colors
 # List of pieces with the provided names
 piezas = ["Black_Brick_1x1", "Black_Brick_1x2", "Black_Brick_2x2", "Black_Brick_Modified_1x1_with_Stud_on_Side", "Black_Brick_Modified_1x2_with_Grille", "Black_Brick_Round_1x1", "Black_Brick_Round_2x2_with_Axle_Hole", "Black_Plate_1x2", "Black_Plate_2x2", "Black_Slope_45_2x1", "Black_Slope_45_2x2", "Black_Slope_65_2x1x2", "Black_Slope_Curved_1x2", "Bright_Green_Plant_Flower_2x2_Leaves-Angular", "Bright_Light_Orange_Brick_1x2", "Bright_Light_Orange_Brick_2x2", "Bright_Light_Orange_Slope__Curved_1x2", "Bright_Light_Yellow_Arch_1x4", "Bright_Light_Yellow_Brick_1x1", "Bright_Light_Yellow_Brick_1x2", "Bright_Light_Yellow_Brick_2x2", "Bright_Light_Yellow_Brick_Modified_1x2_with_Studs_on_1_Side", "Bright_Light_Yellow_Brick_Round_2x2_with_Axle_Hole", "Bright_Pink_Brick_1x1", "Bright_Pink_Brick_1x2", "Bright_Pink_Brick_2x2", "Bright_Pink_Slope_Curved_1x2", "Coral_Brick_1x2", "Coral_Brick_2x2", "Coral_Slope_Curved_1x2", "Dark_Azure_Brick_Modified_1x1_with_Headlight", "Dark_Blue_Brick_2x2", "Dark_Blue_Brick_Round_1x1", "Dark_Blue_Slope_45_2x2_Double", "Dark_Blue_Slope_Curved_1x2", "Dark_Green_Brick_2x2", "Dark_Green_Brick_Round_1x1", "Dark_Green_Slope_45_2x2", "Dark_Purple_Brick_2x2", "Dark_Purple_Brick_Round_1x1", "Green_Brick_2x2", "Lavender_Brick_1x2", "Lavender_Brick_2x2", "Light_Aqua_Brick_1x1", "Light_Aqua_Brick_1x2", "Light_Aqua_Slope_Inverted_45_2x1", "Medium_Azure_Brick_1x1", "Medium_Azure_Brick_1x2", "Medium_Azure_Brick_Round_1x1", "Medium_Azure_Brick_Round_2x2_with_Axle_Hole", "Medium_Azure_Slope_45_2x1", "Medium_Azure_Slope__Curved_3_x_1", "Pearl_Gold_Cone_1x1_with_Top_Groove", "Red_Brick_1x1", "Red_Brick_1x2", "Red_Brick_2x2", "Red_Brick_Modified_1x1_with_Headlight", "Red_Brick_Modified_1x1x1_2:3_with_Studs_on_Side", "Red_Brick_Round_1x1", "Red_Cone_1x1_with_Top_Groove", "Red_Plant_Flower_2x2_Rounded-Solid_Stud", "Red_Slope_33_3x1", "Red_Slope_65_2x1x2", "Red_Slope_Curved_1x2", "Red_Slope_Inverted_45_2x1", "White_Brick_1x1", "White_Brick_1x2", "White_Brick_2x2", "White_Brick_Modified_1x1_with_Stud_on_Side", "White_Brick_Modified_1x2_with_Studs_on_1_Side", "White_Brick_Round_1_x_1", "White_Brick_Round_2x2_with_Axle_Hole", "White_Slope_45_2x2", "White_Slope_Curved_1x2", "White_Slope_Curved_3x1", "White_Slope_Inverted_45_2x2_with_Hollow_Round_Bottom_Tube", "Yellow_Brick_1x1", "Yellow_Brick_1x2", "Yellow_Brick_2x2", "Yellow_Brick_Modified_1x1_with_Headlight", "Yellow_Brick_Modified_1x1_with_Stud_on_Side", "Yellow_Brick_Round_1x1", "Yellow_Plant_Flower_2x2_Rounded-Solid_Stud", "Yellow_Slope_45_2x1", "Yellow_Slope_45_2x2", "Yellow_Slope_Curved_1x2", "Yellow_Slope_Curved_2x1x1_1:3_with_Recessed_Stud", "Yellow_Slope_Curved_3x1", "Yellow_Slope_Inverted_45_2x1", "Yellow_Slope_Inverted_45_2x2_with_Flat_Bottom_Pin"]
 
+# Solicitar número de cartones
+# Ask for the number of cards
+def solicitar_num_cartones():
+    try:
+        num_cartones = int(input("Ingrese el número de cartones a generar (par entre 2 y 400) / Enter the number of cards to generate (even between 2 and 400): "))
+        if num_cartones < 2:
+            print("El número es menor que 2. Se usarán 2 cartones. / The number is less than 2. 2 cards will be used.")
+            return 2
+        elif num_cartones > 400:
+            print("El número es mayor que 400. Se usarán 400 cartones. / The number is greater than 400. 400 cards will be used.")
+            return 400
+        elif num_cartones % 2 != 0:
+            print("El número es impar. Se usará el número par anterior. / The number is odd. The previous even number will be used.")
+            return num_cartones - 1
+        else:
+            return num_cartones
+    except ValueError:
+        print("Entrada no válida. Se generarán 100 cartones. / Invalid input. 100 cards will be generated.")
+        return 100
 
 # Modificación para añadir listado de piezas al final del PDF
 # Modification to add a parts list at the end of the PDF
@@ -145,7 +164,7 @@ def generar_pdf(nombre_archivo):
     c = canvas.Canvas(nombre_archivo, pagesize=A4)
     ancho, alto = A4
 
-    num_cartones = 200
+    num_cartones = solicitar_num_cartones()
 
     for i in range(num_cartones):
         if i % 2 == 0 and i != 0:  # Añadir una nueva página después de cada 2 cartones / Add a new page after every 2 cards

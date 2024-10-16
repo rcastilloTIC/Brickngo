@@ -63,19 +63,23 @@ def dibujar_listado_piezas(c, piezas):
 # Function to generate a 10x3 bingo card with pieces in specific positions
 def generar_carton():
     carton = [[''] * 10 for _ in range(3)]  # Cartón 3x10 inicialmente vacío / Initially empty 3x10 card
-    piezas_disponibles = random.sample(piezas, 15)  # Elegir 15 piezas aleatorias sin repetición / Choose 15 random pieces without repetition
 
+    # Seleccionar 5 piezas de cada rango especificado / Select 5 pieces from each specified range
+    piezas_grupo_1 = random.sample(piezas[0:30], 5)  # 5 piezas del rango 0 a 29 / 5 pieces from range 0 to 29
+    piezas_grupo_2 = random.sample(piezas[30:60], 5) # 5 piezas del rango 30 a 59 / 5 pieces from range 30 to 59
+    piezas_grupo_3 = random.sample(piezas[60:90], 5) # 5 piezas del rango 60 a 89 / 5 pieces from range 60 to 89
 
-    # Colocar piezas en las casillas impares de las filas impares (1, 3)
-    # Place pieces in odd cells of odd rows (1, 3)
-    for fila_idx in [0, 2]: # Fila 1 y 3 (índices 0, 2) / Row 1 and 3 (indexes 0, 2)
-        for col_idx in [0, 2, 4, 6, 8]:   # Columnas pares 2, 4, 6, 8, 10 / Even columns 2, 4, 6, 8, 10
-            carton[fila_idx][col_idx] = piezas_disponibles.pop(0)
+    # Colocar el primer grupo en la primera fila / Place the first group in the first row
+    for col_idx in [0, 2, 4, 6, 8]:   # Columnas pares (2, 4, 6, 8, 10) / Even columns (2, 4, 6, 8, 10)
+        carton[0][col_idx] = piezas_grupo_1.pop(0)
 
-    # Colocar piezas en las casillas pares de la fila par (2)
-    # Place pieces in even cells of the even row (2))
-    for col_idx in [1, 3, 5, 7, 9]:  # Columnas pares 2, 4, 6, 8, 10 (índices 1, 3, 5, 7, 9)
-        carton[1][col_idx] = piezas_disponibles.pop(0)
+    # Colocar el segundo grupo en la segunda fila / Place the second group in the second row
+    for col_idx in [1, 3, 5, 7, 9]:   # Columnas impares (1, 3, 5, 7, 9) / Odd columns (1, 3, 5, 7, 9)
+        carton[1][col_idx] = piezas_grupo_2.pop(0)
+
+    # Colocar el tercer grupo en la tercera fila / Place the third group in the third row
+    for col_idx in [0, 2, 4, 6, 8]:   # Columnas pares (2, 4, 6, 8, 10) / Even columns (2, 4, 6, 8, 10)
+        carton[2][col_idx] = piezas_grupo_3.pop(0)
 
     return carton
 

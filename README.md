@@ -4,17 +4,17 @@
 Este proyecto contiene un script en Python (`cartones.py`) y un script en Bash (`renombrar.sh`) que te permiten generar un PDF con cartones de bingo de piezas LEGO®. 
 Los cartones se generan a partir de un conjunto de 90 piezas, divididas en tres grupos de 30. El proceso de creación sigue estos pasos:
 
-1. **Primer grupo**: Se seleccionan 5 piezas de forma aleatoria del primer grupo (piezas 1 a 30), pero siempre manteniendo el orden en el que están listadas. Esto significa que, aunque las piezas se eligen aleatoriamente, siempre aparecerán organizadas de menor a mayor en la primera fila del cartón.
+1. **Primer grupo**: Se seleccionan 5 piezas de forma aleatoria del primer grupo (piezas 1 a 30) y ocupan la primera fila del cartón.
 2. **Segundo grupo**: A continuación, se seleccionan 5 piezas del segundo grupo (piezas 31 a 60), también de manera aleatoria, pero estas ocuparán siempre la segunda fila del cartón, en el orden en que se elijan.
 3. **Tercer grupo**: Por último, se eligen 5 piezas del tercer grupo (piezas 61 a 90), de nuevo de manera aleatoria, y estas piezas llenarán la tercera fila del cartón, respetando el orden en que fueron seleccionadas.
 
-El resultado final es un cartón con 15 piezas seleccionadas de manera aleatoria, distribuidas en tres filas de 5 piezas cada una. Lo importante es que, si una pieza en particular es elegida, siempre aparecerá en la misma fila de acuerdo al grupo al que pertenece. Este método imita el comportamiento de los cartones numéricos tradicionales, donde los números de la primera fila provienen de un rango limitado (por ejemplo, del 1 al 29), y siempre se muestran ordenados de menor a mayor.
+El resultado final es un cartón con 15 piezas seleccionadas de manera aleatoria, distribuidas en tres filas de 5 piezas cada una. Lo importante es que, si una pieza en particular es elegida, siempre aparecerá en la misma fila de acuerdo al grupo al que pertenece. Este método imita el comportamiento de los cartones numéricos tradicionales, donde los números de la primera fila provienen de un rango limitado (por ejemplo, del 1 al 29).
 
 ## Descripción
 
 ### `cartones.py`
 
-El script de Python genera un archivo PDF (`cartones.pdf`) con 200 cartones de bingo, cada uno con un conjunto de piezas LEGO seleccionadas de forma aleatoria. Además, cada cartón incluye imágenes de las piezas y el título "bingo.jpg" en la parte superior. El PDF también incluye una lista de las piezas utilizadas al final del documento.
+El script de Python genera un archivo PDF (`cartones.pdf`) con los cartones de bingo pedidos (número par), cada uno con un conjunto de piezas LEGO seleccionadas de forma aleatoria. Además, cada cartón incluye imágenes de las piezas y el título "bingo.jpg" en la parte superior. El PDF también incluye una lista de las piezas utilizadas al final del documento.
 
 - **Formato de los cartones**: Cada cartón tiene un formato de 10x3.
 - **Imágenes**: El script intenta cargar las imágenes de cada pieza desde el directorio actual. Si la imagen no se encuentra, se mostrará un recuadro rojo con el texto "No image".
@@ -101,18 +101,18 @@ This project contains a Python script (`cartones.py`) and a Bash script (`renomb
 
 The cards are generated from a set of 90 items, divided into three groups of 30. The creation process follows these steps:
 
-1. **First group**: 5 items are randomly selected from the first group (items 1 to 30), but they are always arranged in the order in which they are listed. This means that even though the items are chosen randomly, they will always appear sorted from smallest to largest in the first row of the card.
+1. **First group**: 5 items are randomly selected from the first group (items 1 to 30), and they are always arranged in the first row of the card.
 2. **Second group**: Next, 5 items are selected from the second group (items 31 to 60), also randomly, but these will always occupy the second row of the card, in the order in which they are chosen.
 3. **Third group**: Finally, 5 items are selected from the third group (items 61 to 90), once again randomly, and these items will fill the third row of the card, maintaining the order in which they were selected.
 
-The final result is a card with 15 randomly selected items, distributed in three rows of 5 items each. What’s important is that if a particular item is chosen, it will always appear in the same row according to the group it belongs to. This method mimics the behavior of traditional number cards, where the numbers in the first row come from a limited range (for example, 1 to 29) and are always displayed in ascending order.
+The final result is a card with 15 randomly selected items, distributed in three rows of 5 items each. What’s important is that if a particular item is chosen, it will always appear in the same row according to the group it belongs to. This method mimics the behavior of traditional number cards, where the numbers in the first row come from a limited range (for example, 1 to 29).
 
 
 ## Description
 
 ### `cartones.py`
 
-The Python script generates a PDF file (`cartones.pdf`) with 200 bingo cards, each with a random set of LEGO pieces. Additionally, each card includes images of the pieces and the title "bingo.jpg" at the top. The PDF also includes a list of the LEGO pieces used at the end of the document.
+The Python script generates a PDF file (`cartones.pdf`) with the bingo cards wanted (even number), each with a random set of LEGO pieces. Additionally, each card includes images of the pieces and the title "bingo.jpg" at the top. The PDF also includes a list of the LEGO pieces used at the end of the document.
 
 - **Card format**: Each card has a 10x3 format.
 - **Images**: The script tries to load images of each part from the images directory. If an image is not found, a red box with "No image" text will be shown.

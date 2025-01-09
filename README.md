@@ -93,6 +93,7 @@ Este proyecto está bajo la licencia CC BY-NC-SA 4.0 . Puedes consultar [este en
 
 	- Asegúrate de que las imágenes de las piezas estén en el directorio imagenes/ y tengan el nombre adecuado para que sean cargadas correctamente en el PDF.
 	- El archivo de título bingo.jpg debe estar en el directorio raíz del proyecto para que sea utilizado en la generación del PDF.
+ 	- El nombre es un juego de palabras entre Brick y Bingo, por si no había quedado suficientemente claro ;)
 
 
 # LEGO® Bingo Card Generator (Inglés / English)
@@ -186,6 +187,7 @@ This project is licensed under the CC BY-NC-SA 4.0 License. You can check [this 
 
 	- Make sure that the images of the pieces are in the imagenes/ directory and have the correct name format to be loaded properly in the PDF.
 	- The bingo.jpg title file must be in the root directory of the project to be used in the PDF generation.
+ 	- The name is a play on words between Brick and Bingo, in case it wasn’t clear enough ;)
 
 
 

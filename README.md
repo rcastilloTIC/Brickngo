@@ -56,8 +56,6 @@ pip install reportlab
 
 Para usar el script de creación de la variable python, ejecuta:
 
-To use the renaming script, run:
-
 ```bash
 bash renombrar.sh
 ```
